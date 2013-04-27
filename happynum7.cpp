@@ -1,5 +1,7 @@
 #include "happynum.h"
 
+#define ALLOWNEGINPUT 0
+
 const int closedsetsize = 163;
 const int maxtraversalsinset = 107;
 
@@ -22,24 +24,37 @@ void InitHappy(void)
 {
 }
 
-bool IsHappy(int num)
+bool IsHappyLooper(int num)
 {
-    if (0 == num)
-        return false;
-
-// modulo doesn't work exactly like you think on negative numbers. So go positive.
-    if (num < 0)
-        num = -num;
-
     int countdown = maxtraversalsinset;
 
     while (countdown > 0 && num != 1)
     {
-        if (num < closedsetsize)
-            --countdown;
+        --countdown;
 
         num = happysummation(num);
     }
 
     return 1 == num;
+}
+
+bool IsHappyBigUn(int num)
+{
+    while (num >= closedsetsize)
+    {
+        num = happysummation(num);
+    }
+
+    return IsHappyLooper(num);
+}
+
+bool IsHappy(int innum)
+{
+#if defined(ALLOWNEGINPUT) && ALLOWNEGINPUT
+    if (innum < 0)
+        innum = -innum;
+#endif
+
+//    return innum < closedsetsize ? IsHappyLooper(innum) : IsHappyBigUn(innum);
+    return IsHappyBigUn(innum);
 }
