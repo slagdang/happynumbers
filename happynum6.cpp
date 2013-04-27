@@ -32,15 +32,15 @@ bool IsHappy(int num)
     if (num < 0)
         num = -num;
 
-	int countdown = maxtraversalsinset;
+    int countdown = maxtraversalsinset;
 
-	while (countdown > 0 && num != 1)
-	{
-		if (num < closedsetsize)
-			--countdown;
+    while (countdown > 0 && num != 1)
+    {
+        if (num < closedsetsize)
+            --countdown;
 
-		num = happysummation(num);
-	}
+        num = happysummation(num);
+    }
 
     return 1 == num;
 }
