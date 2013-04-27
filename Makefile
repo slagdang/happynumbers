@@ -13,7 +13,7 @@ LDFLAGS := -lc++ -lstdc++ $(DEBUGLFLAGS)
 TOOL := happychecker
 TOOL2 := smallestgrowerfinder
 
-TOOLOBJS := happychecker.o happynum4.o
+TOOLOBJS := happychecker.o happynum5.o
 TOOL2OBJS := smallestgrowerfinder.o
 
 ALLBINS := $(TOOL) $(TOOL2)
@@ -34,6 +34,8 @@ happynum2.o : happynum2.cpp happynum.h
 happynum3.o : happynum3.cpp happynum.h
 
 happynum4.o : happynum4.cpp happynum.h
+
+happynum5.o : happynum5.cpp happynum.h
 
 happychecker.o : happychecker.cpp happynum.h
 
