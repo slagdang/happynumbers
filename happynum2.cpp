@@ -1,7 +1,7 @@
 
 #include <map>
 
-#include "happynum2.h"
+#include "happynum.h"
 
 static int happysummation(int num)
 {
@@ -21,7 +21,11 @@ static int happysummation(int num)
     return sum;
 }
 
-bool IsHappy2(int num)
+void InitHappy(void)
+{
+}
+
+bool IsHappy(int num)
 {
     std::map<int, int>      calculated;
 

@@ -39,8 +39,14 @@ bool IsHappy(int innum)
     int     happied = happysummation(innum);
 
 // mark this number as non-happy in case we loop back to it
-    happymap3[innum] = 0;
+	if (innum < 163)
+	    happymap3[innum] = 0;
 
 // then update the number with what we get by checking on it
-    return ((happymap3[innum] = IsHappy(happied))) ? true : false;
+	int			rethappy = IsHappy(happied);
+
+	if (innum < 163)
+		happymap3[innum] = rethappy;
+
+    return rethappy ? true : false;
 }

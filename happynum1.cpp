@@ -1,7 +1,11 @@
 
-#include "happynum1.h"
+#include "happynum.h"
 
-bool IsHappy1(int num)
+void InitHappy(void)
+{
+}
+
+bool IsHappy(int num)
 {
     if (0 == num)
         return false;
