@@ -13,11 +13,12 @@ LDFLAGS := -lc++ -lstdc++ $(DEBUGLFLAGS)
 TOOL := happychecker
 TOOL2 := smallestgrowerfinder
 
+ALGOOBJS := happynum1.o happynum2.o happynum3.o happynum4.o happynum5.o happynum6.o
 TOOLOBJS := happychecker.o happynum5.o
 TOOL2OBJS := smallestgrowerfinder.o
 
 ALLBINS := $(TOOL) $(TOOL2)
-ALLOBJS = $(TOOLOBJS) $(TOOL2OBJS)
+ALLOBJS := $(TOOLOBJS) $(TOOL2OBJS) $(ALGOOBJS)
 
 .PHONY: all clean
 
@@ -44,4 +45,7 @@ happychecker.o : happychecker.cpp happynum.h
 smallestgrowerfinder.o : smallestgrowerfinder.cpp
 
 clean:
-	rm -f $(ALLOBJS); rm $(ALLBINS)
+	rm -f $(ALLOBJS)
+
+distclean: clean
+	rm -f $(ALLBINS)

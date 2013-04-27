@@ -34,7 +34,6 @@ int main(int argc, const char *argv[])
 	int				sum[checknums];
 	int				biggestsofar = 0;
 	int				xformbound = 0;
-	int				xform;
 
 	for (checkit = (checknums - 1); checkit >= 0; checkit--)
 	{
