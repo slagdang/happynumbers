@@ -1,5 +1,14 @@
-
 #include "happynum.h"
+
+/*
+   This version tries to recognize any looping by remembering the lowest number
+   seen so far. If we see this again, we know we are looping. It doesn't work
+   because some numbers outside the loop may be bigger than all in the loop and
+   thus we just keep looping without detecting we are doing so. It fails on the
+   number 2 which contains a loop that does not include the number 2.
+
+   This one never reaches 10,000,000.
+ */
 
 void InitHappy(void)
 {
@@ -19,18 +28,7 @@ bool IsHappy(int num)
 
     while (1)
     {
-        int         numd = num;
-        int         sum = 0;
-
-        while (numd > 0)
-        {
-            int         dig = numd % 10;
-
-            sum += dig * dig;
-            numd /= 10;
-        }
-
-        num = sum;
+        num = happysummation(num);
 
         if (num == lowest)
             break;

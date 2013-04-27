@@ -1,52 +1,51 @@
-
 #include <map>
 
 #include "happynum.h"
 
-static int happysummation(int num)
-{
-    int         sum = 0;
+/*
+   This version maintains a map for every checked number in the closed set (numbers which can
+   be in loops) whether this number is happy or not. Numbers outside the closed set are
+   traversed until a number within the closed set (or 1) is reached. At
+   each traversal this map is checked to see if we already know the result for this value.
+   If a number within the closed set is ever seen twice without seeing 1, then failure is
+   detected. Numbers larger than the closed set cannot be seen twice so there is no need
+   to check them. Happiness of nubmers within the closed set it recorded in the map after
+   it is determined.
 
-    if (num < 0)
-        num = -num;
+   This one took about 1.2 seconds to get to 10,000,000.
+ */
 
-    while (num != 0)
-    {
-        int         dig = num % 10;
-
-        sum += dig * dig;
-        num /= 10;
-    }
-
-    return sum;
-}
-
-static std::map<int, int>      happymap3;
+static std::map<int, bool>      happymap;
 
 void InitHappy(void)
 {
-    happymap3[0] = 0;
-    happymap3[1] = 1;
+    happymap[0] = 0;
+    happymap[1] = 1;
 }
 
 bool IsHappy(int innum)
 {
-    if (0 != happymap3.count(innum))
+#if defined(ALLOWNEGINPUT) && ALLOWNEGINPUT
+    if (innum < 0)
+        innum = -innum;
+#endif
+
+    if (0 != happymap.count(innum))
     {
-        return happymap3[innum];
+        return happymap[innum];
     }
 
     int     happied = happysummation(innum);
 
 // mark this number as non-happy in case we loop back to it
-    if (innum < 163)
-        happymap3[innum] = 0;
+    if (innum < closedsetsize)
+        happymap[innum] = false;
 
 // then update the number with what we get by checking on it
-    int         rethappy = IsHappy(happied);
+    bool         rethappy = IsHappy(happied);
 
-    if (innum < 163)
-        happymap3[innum] = rethappy;
+    if (innum < closedsetsize)
+        happymap[innum] = rethappy;
 
-    return rethappy ? true : false;
+    return rethappy;
 }

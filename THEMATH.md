@@ -50,6 +50,10 @@ Every number greater than or equal to 0 and less than 163 maps onto another numb
 
 However, there is another loop that doens't lead to the final state of 1, that is 0. So there are at most 162 links in a traversal to 1.
 
-Also, for every number XY where there is another number YX which is not the same, XY and YX lead to the same node. It is not possible to traverse both of these links in a route which ends up at 1 because the 2nd traversal would be an indication that this is a loop. So that means the traversals strating at half of the numbers 00-99 except for 00-99 cannot be traversed. That removes 45 traversals, leaving us with 107 traversals.
+Also, for every number XY where there is another number YX which is not the same, XY and YX lead to the same node. It is not possible to traverse both of these links in a route which ends up at 1 because the 2nd traversal would be an indication that this is a loop. So that means the traversals strating at half of the numbers 00-99 except for XX form numbers cannot be traversed. That removes 45 traversals, leaving us with 107 traversals.
 
-If, after producing a number less than 163 we traverse 107 more times and have not yet reached 0 or 1, then we will never reach either of them.
+There are also similar numbers 1XY and 1YX between 100 and 155. Half of these not counting the XX forms cannot be traverses. This removes 15 traversals leaving us with 92 traversals.
+
+By exhaustive search, the longest traversal is 19.
+
+If, after producing a number less than 163 we traverse the requisite number of additonal times and have not yet reached 0 or 1, then we will never reach either of them.

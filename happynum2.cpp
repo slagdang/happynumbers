@@ -1,25 +1,14 @@
-
 #include <map>
 
 #include "happynum.h"
 
-static int happysummation(int num)
-{
-    int         sum = 0;
+/*
+   This version creates an empty map each time a new number is tested. It records
+   every number traversed into this map. If a number is seen twice before reaching
+   1, then failure is detected.
 
-    if (num < 0)
-        num = -num;
-
-    while (num != 0)
-    {
-        int         dig = num % 10;
-
-        sum += dig * dig;
-        num /= 10;
-    }
-
-    return sum;
-}
+   This one took about 29 seconds to get to 10,000,000.
+ */
 
 void InitHappy(void)
 {
@@ -27,12 +16,12 @@ void InitHappy(void)
 
 bool IsHappy(int num)
 {
-    std::map<int, int>      calculated;
+    std::map<int, bool>      calculated;
 
     if (0 == num)
         return false;
 
-    calculated[num] = 1;
+    calculated[num] = true;
 
     while (1 != num)
     {
@@ -42,7 +31,7 @@ bool IsHappy(int num)
             return false;
 
         num = happy;
-        calculated[num] = 1;
+        calculated[num] = true;
     }
 
     return true;
