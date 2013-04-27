@@ -37,6 +37,8 @@ happynum4.o : happynum4.cpp happynum.h
 
 happynum5.o : happynum5.cpp happynum.h
 
+happynum6.o : happynum6.cpp happynum.h
+
 happychecker.o : happychecker.cpp happynum.h
 
 smallestgrowerfinder.o : smallestgrowerfinder.cpp
