@@ -54,6 +54,7 @@ Also, for every number XY where there is another number YX which is not the same
 
 There are also similar numbers 1XY and 1YX between 100 and 155. Half of these not counting the XX forms cannot be traverses. This removes 15 traversals leaving us with 92 traversals.
 
-By exhaustive search, the longest traversal is 19.
+By exhaustive search, the longest traversal within the closed set is 18.
+By exhaustive search, the longest traversal within the closed set that terminates at 1 is 5.
 
 If, after producing a number less than 163 we traverse the requisite number of additonal times and have not yet reached 0 or 1, then we will never reach either of them.

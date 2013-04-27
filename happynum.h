@@ -11,7 +11,7 @@ bool IsHappy(int num);
 
 static const int closedsetsize = 163;
 static const int largestgrower = 99;
-static const int maxtraversalsinset = 19;
+static const int maxtraversalsinset = 5;
 
 static int happysummation(int num)
 {

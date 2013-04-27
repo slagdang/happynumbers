@@ -10,7 +10,7 @@
    outside it and after you enter it you never leave it to eliminate some conditionals
    within the loops. This did not improve speed significantly versus version 6.
  
-   This one took about 2.0 seconds to get to 10,000,000 which is a bit faster than version
+   This one took about 0.8 seconds to get to 10,000,000 which is faster than version
    2 which uses a map to remember where it has been. This one uses very little memory.
  */
 
